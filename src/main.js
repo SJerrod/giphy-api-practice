@@ -59,10 +59,11 @@ $(document).ready(function() {
   });
 
   $('#randomButton').click (function() {
-    
+    const tags = $('tags').val();
+    const source = $('sourceUrl').val();
 
     let request = new XMLHttpRequest();
-    const url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&tag=&rating=g`;
+    const url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&source_image_url=${source}&tag=${tags}`;
 
     request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status ===200) {
@@ -72,6 +73,27 @@ $(document).ready(function() {
     };
     
     request.open("GET", url, true);
+    request.send();
+
+    function getElements(response) {
+      $('.showGif1').show();
+      $('.showGif1').html(`<img src=${response.data.images.original.url}>`);
+    }
+  });
+  $('#uploadButton').click (function() {
+    
+
+    let request = new XMLHttpRequest();
+    const url = `upload.giphy.com/v1/gifs/api_key=${process.env.API_KEY}&tag=`;
+
+    request.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status ===200) {
+        const response = JSON.parse(this.responseText);
+        getElements(response);
+      }
+    };
+    
+    request.open("POST", url, true);
     request.send();
 
     function getElements(response) {

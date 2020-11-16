@@ -17,16 +17,13 @@
     <div class="showGif3">
     </div>
     <h1>Upload your own gif to Giphy!</h1>
-    <div class="input-group">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="inputGroupFile01"
-          aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-      </div>
-    </div>
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-    </div>
+    <form id="uploadForm">
+    <label for="sourceUrl">Enter the source url:</label>
+    <input id="sourceUrl" type="text">
+    <label for="tags">Enter tags for your gif (separated by commas):</label>
+    <input id="tags" type="text">
+    <button class="btn btn-outline-dark" id="uploadButton">Upload!</button>
+    </form>
   </div>
 </body>
 </html>
