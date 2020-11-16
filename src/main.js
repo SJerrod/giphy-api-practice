@@ -10,7 +10,7 @@ $(document).ready(function() {
     console.log(lookup);
 
     let request = new XMLHttpRequest();
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=CYM6QolGn05OOEesYFCuqvyCb92rkydi&q=${lookup}&limit=25&offset=0&rating=g&lang=en`;
+    const url = `https://api.giphy.com/v1/gifs/search?api_key=CYM6QolGn05OOEesYFCuqvyCb92rkydi&q=${lookup}&limit=3&offset=0&rating=g&lang=en`;
 
     request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status ===200) {
@@ -26,7 +26,9 @@ $(document).ready(function() {
       $('.showGif1').show();
       $('.showGif1').html(`<img src=${response.data[0].images.original.url}>`);
       $('.showGif2').show();
+      $('.showGif2').html(`<img src=${response.data[1].images.original.url}>`);
       $('.showGif3').show();
+      $('.showGif3').html(`<img src=${response.data[2].images.original.url}>`);
     }
   });
 });
